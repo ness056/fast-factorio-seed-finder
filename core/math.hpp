@@ -99,6 +99,10 @@ inline float fastpow2 (float p) {
     return v.f;
 }
 
+static float fastpow(const float x, const float p) {
+    return fastpow2 (p * fastlog2 (x));
+}
+
 inline float sin(float x) {
     constexpr double c_2500 = std::bit_cast<double>(0x3fd0000000000000); // 0.25
     constexpr double c_inv_2pi = std::bit_cast<double>(0x3fc45f306dc9c883); // 1/2pi
