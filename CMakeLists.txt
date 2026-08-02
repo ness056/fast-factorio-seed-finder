@@ -9,9 +9,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(warnings_interface INTERFACE)
 
 target_compile_options(warnings_interface INTERFACE
-    $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -Wpedantic>
-    $<$<CXX_COMPILER_ID:Clang>:-Wall -Wextra -Wpedantic>
-    $<$<CXX_COMPILER_ID:MSVC>:/W4 /fp:strict>
+    $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -Wpedantic -mavx2 -fno-math-errno>
+    $<$<CXX_COMPILER_ID:Clang>:-Wall -Wextra -Wpedantic -mavx2 -fno-math-errno>
+    $<$<CXX_COMPILER_ID:MSVC>:/W4 /fp:strict /arch:AVX2>
 )
 
 add_subdirectory(core)
