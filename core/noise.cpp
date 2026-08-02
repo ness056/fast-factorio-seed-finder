@@ -79,7 +79,7 @@ NoisePrecompute::NoisePrecompute(const MapGenSettings& settings) {
     _water_frequency = 1.f / settings.water_scale;
     const float water_size = settings.water_coverage;
 
-    _water_level = 10 * Math::log2f(water_size);
+    _water_level = 10 * Math::decompiled_log2(water_size);
 
     _nauvis_segmentation_multiplier = 1.5f * _water_frequency;
     _nauvis_hills_input_scale = _nauvis_segmentation_multiplier / 90.f;

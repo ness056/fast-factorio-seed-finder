@@ -1,15 +1,16 @@
 #define _USE_MATH_DEFINES
-#include <cmath>
 #include "noise.hpp"
 #include <chrono>
 #include <print>
 #include <iostream>
 #include <fstream>
-#include <print>
+#include <filesystem>
 #include <argparse/argparse.hpp>
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
+
+namespace fs = std::filesystem;
 
 int main(int argc, char* argv[]) {
     argparse::ArgumentParser program("image_generator");
@@ -81,6 +82,15 @@ int main(int argc, char* argv[]) {
     } else {
         std::println("elevation-type has to be '2.0', '1.1' or 'island'.");
         return 1;
+    }
+
+    fs::path parent = fs::path(out_path).parent_path();
+    if (!parent.empty()) {
+        std::error_code ec;
+        if (!fs::create_directories(parent, ec) && ec) {
+            std::println(stderr, "Couldn't create parent directory {}\n{}", parent.string(), ec.message());
+            return 1;
+        }
     }
 
     NoisePrecompute precompute(settings);
