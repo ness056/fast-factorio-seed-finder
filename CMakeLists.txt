@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.28)
 project(seed_finder LANGUAGES CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -22,3 +22,4 @@ add_subdirectory(seed_finders/example)
 add_subdirectory(seed_finders/solo_any)
 add_subdirectory(seed_finders/botless_solo_any)
 add_subdirectory(seed_finders/mmp)
+add_subdirectory(seed_finders/peninsula)

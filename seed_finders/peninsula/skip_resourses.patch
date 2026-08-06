@@ -1,0 +1,28 @@
+diff --git a/core/noise.cpp b/core/noise.cpp
+index d63248e..8bc4155 100644
+--- a/core/noise.cpp
++++ b/core/noise.cpp
+@@ -576,6 +576,7 @@ Patches starter_patches(
+     const uint32_t seed0
+ ) {
+     Patches patches;
++    return patches;
+ 
+     auto candidates = generate_candidates<STARTER>(cache, seed0, { 0, 0 });
+ 
+@@ -655,6 +656,7 @@ static float regular_radius(const float rq_factor, const float quantity) {
+ 
+ Patches regular_patches(const NoisePrecompute& precompute, NoiseCache& cache, const uint32_t seed0, const PositionI32 region) {
+     Patches patches;
++    return patches;
+ 
+     auto candidates = generate_candidates<REGULAR>(cache, seed0, region);
+ 
+@@ -698,6 +700,7 @@ Patches regular_patches(const NoisePrecompute& precompute, NoiseCache& cache, co
+ 
+ PatchArray enemy_bases(const MapGenSettings& settings, const NoisePrecompute&, uint32_t seed, const PositionI32 region) {
+     PatchArray patches;
++    return patches;
+ 
+     auto candidates = generate_candidates_biters(seed, region);
+ 
